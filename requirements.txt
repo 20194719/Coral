@@ -1,0 +1,11 @@
+# Runtime dependencies for Python 3.12.
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.6.0
+torch==2.5.1
+threadpoolctl==3.6.0
+faiss-cpu==1.8.0
+hdbscan==0.8.40
+openai==1.64.0
+sentence-transformers==3.3.1
+transformers==4.54.1

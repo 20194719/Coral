@@ -1,0 +1,25 @@
+{
+  "llm": {
+    "model": "Qwen3.8-27B",
+    "endpoints": ["your model endpoint URL"],
+    "api_key_env": "OPENAI_API_KEY",
+    "workers": 128,
+    "timeout_seconds": 300,
+    "max_attempts": 5,
+    "temperature": 0,
+    "top_p": 1,
+    "enable_thinking": false
+  },
+  "embedding": {
+    "model_path": "/path/to/Qwen3-Embedding-4B",
+    "dimension": 2560,
+    "device": "cuda:0",
+    "batch_size": 4,
+    "batch_size_by_dataset": {"biodex": 1}
+  },
+  "runtime": {
+    "filter_device": "cuda:0",
+    "threads": 4,
+    "output_root": "runs"
+  }
+}

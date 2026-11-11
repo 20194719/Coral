@@ -1,0 +1,443 @@
+{
+  "imdb": {
+    "filter_calib_docs": 160,
+    "strat_hi_q": 0.5,
+    "seed_global": 0,
+    "tables": [
+      "movies",
+      "actors"
+    ],
+    "relation_layout": "single",
+    "groups": 5,
+    "budget": 200,
+    "views": [
+      {
+        "name": "main",
+        "numeric_example_subject": "male actors",
+        "tables": [
+          "movies",
+          "actors"
+        ],
+        "entities": [
+          "MOVIE",
+          "PERSON"
+        ],
+        "profile_roles": [
+          "film",
+          "person (film industry)"
+        ],
+        "schema_examples": [
+          [
+            "animated films",
+            "films released before 2000"
+          ],
+          [
+            "people who have also directed",
+            "people born before 1970"
+          ]
+        ],
+        "model_spec": {
+          "d": 32,
+          "hidden": 256,
+          "depth": 1,
+          "dropout": 0.0,
+          "lam_init": 0.02,
+          "l2_lam": 0.001,
+          "wd": 0.0001,
+          "lr": 0.003,
+          "epochs": 400,
+          "batch": 0,
+          "w_alpha": 0.5,
+          "seed": 0
+        }
+      }
+    ],
+    "bm25_topk": 50,
+    "dense_topk": 50,
+    "stratum_caps": {
+      "both_high": 1300,
+      "bm25_high": 1000,
+      "dense_high": 1000,
+      "medium": 1200,
+      "background": 500
+    },
+    "rtype_kind": "kmeans",
+    "rtype_k": 12,
+    "rtype_min": 15,
+    "rtype_summary_neighbors": 5,
+    "tower_dimension": 256,
+    "prior_strength": 1.0,
+    "offline_pairs": 23000,
+    "filter_predicate_count": 40,
+    "filter_predicate_sample": 24,
+    "dataset": "imdb",
+    "join_prior_strength": 20.0,
+    "filter_prior_strength": 1.0,
+    "join_calibration": false,
+    "batch": 25,
+    "filter_model": "mlp",
+    "filter_cv": true,
+    "filter_verification": true,
+    "filter_rewrites": true,
+    "filter_normalization": true,
+    "filter_paraphrases": 3,
+    "filter_original_weight": 0.5,
+    "tree_parameters": {
+      "movies": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 15,
+        "iterations": 240,
+        "regularization": 2.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      },
+      "actors": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 31,
+        "iterations": 240,
+        "regularization": 10.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      }
+    },
+    "filter_roles": {
+      "movies": "film",
+      "actors": "person (film industry)"
+    },
+    "mlp_parameters": {
+      "movies": {
+        "width": 128,
+        "depth": 2,
+        "residual": true,
+        "knots": 8,
+        "dropout": 0.1,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      },
+      "actors": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      }
+    },
+    "mlp_epochs": 40
+  },
+  "trex": {
+    "filter_calib_docs": 80,
+    "strat_hi_q": 0.5,
+    "seed_global": 0,
+    "tables": [
+      "works",
+      "contributors"
+    ],
+    "relation_layout": "single",
+    "groups": 5,
+    "budget": 200,
+    "views": [
+      {
+        "name": "main",
+        "numeric_example_subject": "male authors",
+        "tables": [
+          "works",
+          "contributors"
+        ],
+        "entities": [
+          "CREATIVE WORK",
+          "PERSON, BAND OR COMPANY"
+        ],
+        "profile_roles": [
+          "creative work",
+          "person, band or company"
+        ],
+        "schema_examples": [
+          [
+            "science-fiction works",
+            "works released or published before 2000"
+          ],
+          [
+            "people who have also directed works",
+            "people born before 1970 or organizations founded before 1970"
+          ]
+        ],
+        "schema_roles": [
+          "creative work (film, book, video game or album)",
+          "person, band or company"
+        ],
+        "model_spec": {
+          "d": 32,
+          "hidden": 256,
+          "depth": 1,
+          "dropout": 0.0,
+          "lam_init": 0.02,
+          "l2_lam": 0.001,
+          "wd": 0.0001,
+          "lr": 0.003,
+          "epochs": 400,
+          "batch": 0,
+          "w_alpha": 0.5,
+          "seed": 0
+        }
+      }
+    ],
+    "bm25_topk": 50,
+    "dense_topk": 50,
+    "stratum_caps": {
+      "both_high": 1120,
+      "bm25_high": 862,
+      "dense_high": 862,
+      "medium": 1034,
+      "background": 431
+    },
+    "rtype_kind": "hdbscan",
+    "rtype_k": 12,
+    "rtype_min": 15,
+    "rtype_summary_neighbors": 5,
+    "tower_dimension": 256,
+    "prior_strength": 1.0,
+    "offline_pairs": 20000,
+    "filter_predicate_count": 24,
+    "filter_predicate_sample": 24,
+    "dataset": "trex",
+    "join_prior_strength": 20.0,
+    "filter_prior_strength": 1.0,
+    "join_calibration": true,
+    "batch": 25,
+    "filter_model": "tree",
+    "filter_cv": false,
+    "filter_verification": false,
+    "filter_rewrites": false,
+    "filter_normalization": false,
+    "filter_paraphrases": 3,
+    "filter_original_weight": 1.0,
+    "tree_parameters": {
+      "works": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 15,
+        "iterations": 240,
+        "regularization": 2.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      },
+      "contributors": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 31,
+        "iterations": 240,
+        "regularization": 10.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      }
+    },
+    "filter_roles": {
+      "works": "creative work",
+      "contributors": "person, band or company"
+    },
+    "mlp_parameters": {
+      "works": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      },
+      "contributors": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      }
+    },
+    "mlp_epochs": 40
+  },
+  "biodex": {
+    "strat_hi_q": 0.5,
+    "seed_global": 0,
+    "tables": [
+      "articles",
+      "drugs",
+      "reactions"
+    ],
+    "relation_layout": "named",
+    "groups": 5,
+    "budget": 600,
+    "views": [
+      {
+        "name": "AD",
+        "relation": "theta1",
+        "tables": [
+          "articles",
+          "drugs"
+        ],
+        "entities": [
+          "MEDICAL ARTICLE",
+          "DRUG"
+        ],
+        "model_spec": {
+          "d": 64,
+          "hidden": 256,
+          "depth": 1,
+          "dropout": 0.0,
+          "lam_init": 0.02,
+          "l2_lam": 0.001,
+          "wd": 0.0001,
+          "lr": 0.003,
+          "epochs": 400,
+          "batch": 0,
+          "w_alpha": 0.5,
+          "seed": 0
+        },
+        "oracle_directory": "oracle library/biodex_AD"
+      },
+      {
+        "name": "AX",
+        "relation": "theta2",
+        "tables": [
+          "articles",
+          "reactions"
+        ],
+        "entities": [
+          "MEDICAL ARTICLE",
+          "ADVERSE REACTION"
+        ],
+        "model_spec": {
+          "d": 32,
+          "hidden": 256,
+          "depth": 1,
+          "dropout": 0.0,
+          "lam_init": 0.02,
+          "l2_lam": 0.001,
+          "wd": 0.0001,
+          "lr": 0.003,
+          "epochs": 400,
+          "batch": 0,
+          "w_alpha": 0.5,
+          "seed": 0
+        },
+        "oracle_directory": "oracle library/biodex_AX"
+      }
+    ],
+    "bm25_topk": 50,
+    "dense_topk": 50,
+    "stratum_caps": {
+      "both_high": 1300,
+      "bm25_high": 1000,
+      "dense_high": 1000,
+      "medium": 1200,
+      "background": 500
+    },
+    "tower_dimension": 256,
+    "prior_strength": 1.0,
+    "offline_pairs": 23000,
+    "filter_predicate_count": 24,
+    "dataset": "biodex",
+    "join_prior_strength": 20.0,
+    "filter_prior_strength": 1.0,
+    "join_calibration": true,
+    "batch": 75,
+    "filter_model": "tree",
+    "filter_cv": false,
+    "filter_verification": false,
+    "filter_rewrites": false,
+    "filter_normalization": false,
+    "filter_paraphrases": 3,
+    "filter_original_weight": 1.0,
+    "filter_calib_docs": 80,
+    "tree_parameters": {
+      "articles": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 15,
+        "iterations": 240,
+        "regularization": 2.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      },
+      "drugs": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 31,
+        "iterations": 240,
+        "regularization": 10.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      },
+      "reactions": {
+        "attributes": "values",
+        "rank": 16,
+        "representation": "identity",
+        "leaves": 31,
+        "iterations": 240,
+        "regularization": 10.0,
+        "minimum_leaf": 25,
+        "learning_rate": 0.06
+      }
+    },
+    "filter_roles": {
+      "articles": "medical article",
+      "drugs": "drug",
+      "reactions": "adverse reaction"
+    },
+    "mlp_parameters": {
+      "articles": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      },
+      "drugs": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      },
+      "reactions": {
+        "width": 128,
+        "depth": 2,
+        "residual": false,
+        "knots": 0,
+        "dropout": 0.0,
+        "weight_decay": 0.01,
+        "learning_rate": 0.001,
+        "batch_size": 4096,
+        "brier_mix": 0.0
+      }
+    },
+    "mlp_epochs": 40
+  }
+}
