@@ -19,7 +19,7 @@ This is the implementation of **Coral**, a correlation-aware cardinality estimat
 ├── models.json          # Model endpoints, model paths, and runtime settings.
 ├── requirements.txt     # Python dependencies.
 ├── run.py               # Command-line entry point.
-└── readme.md
+└── README.md
 ```
 
 
